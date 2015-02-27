@@ -1,0 +1,21 @@
+1. Basic Settings
+	* Initial State of Tape
+		- universal: start at zero position
+		- operation: start at the end of input symbol stream
+	* Tape Size
+		- unlimited: augunebtable space
+		- fixed: default 32768 bytes
+	* Default: -m operation -t fixed
+	* Tape convention
+		- 0~N, input space
+		- N+1, N+3, (by 2)..., registers
+		- N+2, N+4, (by 2)..., output buffers
+
+2. Support
+	The default setting only
+
+3. Development Stages
+	* interpreter, and cpmpiler
+	* C: structure
+	* ia64 asm: just-print region and using brainfuck logic
+	* brainfuck: transforms to bf itself
