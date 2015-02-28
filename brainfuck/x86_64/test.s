@@ -1,105 +1,185 @@
-    .section    .text
+.section    .text
 _start:
-
 mov %rsp, %rbx
+sub $0x8, %rbx
+mov $32768, %rax
+ZERO:
+test $0xFFFF, %rax
+jz EZERO
+sub $0x8, %rax
+sub $0x8, %rbx
+movq $0x0, 0x0(%rbx)
+jmp ZERO
+EZERO:
+mov %rsp, %rbx
+sub $0x8, %rbx
 mov $0x1, %rdx
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-incb 0x0(%rbx)
-TAG_0:
-dec %rbx
-incb 0x0(%rbx)
-dec %rbx
-incb 0x0(%rbx)
-dec %rbx
-incb 0x0(%rbx)
-inc %rbx
-inc %rbx
-inc %rbx
-decb 0x0(%rbx)
-cmp $0x0, 0x0(%rbx)
-jnz TAG_0
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
 dec %rbx
 mov %rbx, %rsi
 mov $0x1, %rdi
 mov $0x1, %rax
 syscall
 dec %rbx
-incb 0x0(%rbx)
 mov %rbx, %rsi
 mov $0x1, %rdi
 mov $0x1, %rax
 syscall
 dec %rbx
-incb 0x0(%rbx)
-incb 0x0(%rbx)
 mov %rbx, %rsi
 mov $0x1, %rdi
 mov $0x1, %rax
 syscall
-        mov $0x3c, %rax
-        syscall
-    .global        _start
-    .end
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov %rbx, %rsi
+mov $0x1, %rdi
+mov $0x1, %rax
+syscall
+dec %rbx
+mov $0x3c, %rax
+syscall
+.global        _start
+.end

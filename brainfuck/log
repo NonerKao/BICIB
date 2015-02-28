@@ -1,0 +1,74 @@
+
+./x86_64/a.out:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000400193 <_start>:
+  400193:	48 89 e3             	mov    %rsp,%rbx
+  400196:	48 83 eb 08          	sub    $0x8,%rbx
+  40019a:	48 c7 c0 00 80 00 00 	mov    $0x8000,%rax
+
+00000000004001a1 <ZERO>:
+  4001a1:	48 a9 ff ff 00 00    	test   $0xffff,%rax
+  4001a7:	74 11                	je     4001ba <EZERO>
+  4001a9:	48 83 e8 08          	sub    $0x8,%rax
+  4001ad:	48 83 eb 08          	sub    $0x8,%rbx
+  4001b1:	48 c7 03 00 00 00 00 	movq   $0x0,(%rbx)
+  4001b8:	eb e7                	jmp    4001a1 <ZERO>
+
+00000000004001ba <EZERO>:
+  4001ba:	48 89 e3             	mov    %rsp,%rbx
+  4001bd:	48 83 eb 08          	sub    $0x8,%rbx
+  4001c1:	48 c7 c2 01 00 00 00 	mov    $0x1,%rdx
+  4001c8:	fe 03                	incb   (%rbx)
+  4001ca:	fe 03                	incb   (%rbx)
+  4001cc:	fe 03                	incb   (%rbx)
+  4001ce:	fe 03                	incb   (%rbx)
+  4001d0:	fe 03                	incb   (%rbx)
+  4001d2:	fe 03                	incb   (%rbx)
+  4001d4:	fe 03                	incb   (%rbx)
+  4001d6:	fe 03                	incb   (%rbx)
+
+00000000004001d8 <START_0>:
+  4001d8:	f6 03 ff             	testb  $0xff,(%rbx)
+  4001db:	74 46                	je     400223 <END_0>
+  4001dd:	48 ff cb             	dec    %rbx
+  4001e0:	fe 03                	incb   (%rbx)
+  4001e2:	fe 03                	incb   (%rbx)
+  4001e4:	fe 03                	incb   (%rbx)
+  4001e6:	fe 03                	incb   (%rbx)
+  4001e8:	48 ff cb             	dec    %rbx
+  4001eb:	48 89 de             	mov    %rbx,%rsi
+  4001ee:	48 c7 c7 01 00 00 00 	mov    $0x1,%rdi
+  4001f5:	48 c7 c0 01 00 00 00 	mov    $0x1,%rax
+  4001fc:	0f 05                	syscall 
+  4001fe:	48 ff c3             	inc    %rbx
+
+0000000000400201 <START_1>:
+  400201:	f6 03 ff             	testb  $0xff,(%rbx)
+  400204:	74 0e                	je     400214 <END_1>
+  400206:	48 ff cb             	dec    %rbx
+  400209:	fe 03                	incb   (%rbx)
+  40020b:	fe 03                	incb   (%rbx)
+  40020d:	48 ff c3             	inc    %rbx
+  400210:	fe 0b                	decb   (%rbx)
+  400212:	eb ed                	jmp    400201 <START_1>
+
+0000000000400214 <END_1>:
+  400214:	48 ff cb             	dec    %rbx
+  400217:	fe 03                	incb   (%rbx)
+  400219:	48 ff c3             	inc    %rbx
+  40021c:	48 ff c3             	inc    %rbx
+  40021f:	fe 0b                	decb   (%rbx)
+  400221:	eb b5                	jmp    4001d8 <START_0>
+
+0000000000400223 <END_0>:
+  400223:	48 ff cb             	dec    %rbx
+  400226:	48 ff cb             	dec    %rbx
+  400229:	48 89 de             	mov    %rbx,%rsi
+  40022c:	48 c7 c7 01 00 00 00 	mov    $0x1,%rdi
+  400233:	48 c7 c0 01 00 00 00 	mov    $0x1,%rax
+  40023a:	0f 05                	syscall 
+  40023c:	48 c7 c0 3c 00 00 00 	mov    $0x3c,%rax
+  400243:	0f 05                	syscall 
