@@ -29,22 +29,42 @@ int main(){
 			t[0] = (i > 0) ? matrix[i*l2+j-l2].val : 0;
 			t[1] = (i > 0 && j > 0) ? (p1[i] == p2[j]) + matrix[i*l2+j-l2-1].val : 0;
 			t[2] = (j > 0) ? matrix[i*l2+j-1].val : 0;
-			if(t[2] > t[1] && t[2] > t[0]){
-				matrix[i*l2+j].val = t[2];
-				matrix[i*l2+j].type = 2;
-			}
-			if(t[1] > t[2] && t[1] > t[0]){
+			if(t[1] >= t[2] && t[1] >= t[0]){
 				matrix[i*l2+j].val = t[1];
 				matrix[i*l2+j].type = 1;
 			}
-			if(t[0] > t[1] && t[0] > t[2]){
+			else if(t[2] >= t[1] && t[2] >= t[0]){
+				matrix[i*l2+j].val = t[2];
+				matrix[i*l2+j].type = 2;
+			}
+			else if(t[0] >= t[1] && t[0] >= t[2]){
 				matrix[i*l2+j].val = t[0];
 				matrix[i*l2+j].type = 0;
 			}
-			printf("(%d, %d) : %d\n", i, j, matrix[i*l2+j].val);
 		}
 	}
 
-	printf("%d*%d : %d\n", l1, l2, matrix[l1*l2-1].val);
+	i = l1 - 1;
+	j = l2 - 1;
+	while(i >= 0 && j >= 0){
+		switch(matrix[i*l2+j].type){
+			case 0:
+				i--;
+				//printf("(%c %c)%4x %4x", p1[i], p2[j], i, j);
+				printf("|");
+				break;
+			case 1: 
+				printf(".");
+				i--; j--;
+				break;
+			case 2:
+				//printf("(%c %c)%4x %4x", p1[i], p2[j], i, j);
+				j--;
+				printf("-");
+				break;
+		}
+	}
+	free(p1);
+	free(p2);
 	return 0;
 }

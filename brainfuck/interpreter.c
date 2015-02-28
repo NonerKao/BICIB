@@ -46,6 +46,7 @@ void Esys(void){
 	exit(0);
 }
 
+FILE* fp;
 
 void process(char ch){
 	char stack[SS];
@@ -74,7 +75,7 @@ void process(char ch){
 			starts[top++] = index;
 			stack[index++] = '[';
 			diff = 1;
-			while(scanf("%c", &temp) == 1){
+			while(fscanf(fp, "%c", &temp) == 1){
 				stack[index++] = temp;
 				if(temp == '['){
 					starts[top++] = index-1;
@@ -109,9 +110,15 @@ void process(char ch){
 
 int main(int argc, char* argv[]){
 	char ch;
-	while(scanf("%c", &ch) == 1){
+	if(argc != 2){
+		printf("usage: %s <source>\n");
+		return 0;
+	}
+	fp = fopen(argv[1], "r");
+	while(fscanf(fp, "%c", &ch) == 1){
 		process(ch);
 	}
 	fflush(0);
+	fclose(fp);
 	return 0;
 }
