@@ -27,7 +27,7 @@ be a problem.
 
 After you have a docker environment, you may first clone this project,
 ```bash
-git clone git://git@github.com:NonerKao/BICIB.git
+git clone git@github.com:NonerKao/BICIB.git
 cd BICIB
 ```
 
