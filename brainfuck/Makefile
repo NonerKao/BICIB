@@ -3,16 +3,19 @@ FILE := interpreter compiler
 all: ${FILE}
 interpreter: interpreter.c
 	gcc interpreter.c -o interpreter
+# in the future it should become
+#       bc interpreter.b -o bc
+
 compiler: compiler.c
 	gcc compiler.c -o compiler
+# in the future it should be
+#       bc compiler.b -o bc
 
 int: interpreter
-	cat examples/hw.b | ./interpreter
+	./interpreter examples/hw.b
 
 com: compiler
-	cat examples/hw.b | ./compiler > x86_64/test.s
-	make -C x86_64
+	./compiler examples/hw.b
+	./examples/hw
 clean:
 	rm -fr $(FILE)
-run: 
-	./x86_64/a.out
