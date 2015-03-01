@@ -13,7 +13,7 @@ RUN yum -y install vim gcc make binutils
 COPY brainfuck /root/brainfuck
 
 # a more comfortable prompt style
-COPY /etc/.bashrc /root/
+COPY etc/.bashrc /root/
 
 # an entry
 WORKDIR /root/brainfuck
