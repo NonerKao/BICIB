@@ -1,7 +1,7 @@
-BICIB: Brainfuck Interpreter/Comiler In Brainfuck
+BICIB: Brainfuck Interpreter/Compiler In Brainfuck
 =================================================
 
-BICIB aims to provide a easy-to-use toolset for brainfuck,
+BICIB aims to provide a easy-to-use tool-set for brainfuck,
 which is an esoteric programming language, and it is also written
 in brainfuck.  
 
@@ -9,9 +9,9 @@ BICIB provides both interpreter and compiler to brainfuck.
 
 ## Status
 
-We wrote the interpreter and compiler in C for bootstraping, 
-and ver0.1 will be released as the first stable version after
-the backend of compiler is finished.
+We wrote the interpreter and compiler in C for bootstrapping, 
+and version 0.1 will be released as the first stable version after
+the backend of the compiler is finished.
 Currently we only support x86_64-linux, and an environment
 that can run [docker](https://github.com/docker/docker) since
 the package is dockerized.
@@ -22,7 +22,7 @@ Getting started
 The only thing you have to make sure is that you have docker working 
 properly.  For those who don't know how to install docker, reference
 [this document](http://docs.docker.com/installation/).  Most of the 
-GNU/Linux distrobitions and MAC are already supported, so it shouldn't
+GNU/Linux distributions and MAC are already supported, so it shouldn't
 be a problem.
 
 After you have a docker environment, you may first clone this project,
