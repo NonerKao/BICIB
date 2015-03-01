@@ -6,10 +6,6 @@
 		- unlimited: augunebtable space
 		- fixed: default 32768 bytes
 	* Default: -m operation -t fixed
-	* Tape convention
-		- 0~N, input space
-		- N+1, N+3, (by 2)..., registers
-		- N+2, N+4, (by 2)..., output buffers
 
 2. Support
 	The default setting only

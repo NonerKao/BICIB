@@ -9,8 +9,8 @@ BICIB provides both interpreter and compiler to brainfuck.
 
 ## Status
 
-We wrote the interpreter and compiler in C for bootstrap, 
-ver 0.1 will be released as the first stable version after
+We wrote the interpreter and compiler in C for bootstraping, 
+and ver0.1 will be released as the first stable version after
 the backend of compiler is finished.
 Currently we only support x86_64-linux, and an environment
 that can run [docker](https://github.com/docker/docker) since
@@ -47,7 +47,7 @@ Have fun!
 Licencing
 =========
 
-BICIB is licenced under [GPLv3](http://www.gnu.org/licenses/gpl-3.0.html)
+BICIB is licenced under [GPLv3](http://www.gnu.org/licenses/gpl-3.0.html).
 
 Contact Me
 ==========
