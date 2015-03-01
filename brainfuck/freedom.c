@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<unistd.h>
 #include <fcntl.h>
-#include"simple-object.h"
-#include"simple-object-common.h"
+#include"liberty/simple-object.h"
+#include"liberty/simple-object-common.h"
 
 #define EI_MAG0         0       /* File identification byte 0 index */
 #define ELFMAG0            0x7F /* Magic number byte 0 */
@@ -31,30 +31,48 @@
 
 #define EI_OSABI        7       /* Operating System/ABI indication */
 
+static int
+find_one_section (void *data, const char *name, off_t offset, off_t length)
+{
+  printf("%s %d %d\n", name, offset, length);
+
+  return 1;
+}
+
 
 int main(){
-	int fd = open("b1", O_RDONLY);
-	unsigned char header[SIMPLE_OBJECT_MATCH_HEADER_LEN];
+	int fdi = open("b1", O_RDONLY);
+	int fdo = open("b3", O_RDWR);
 	char* errmsg;
 	int err;
-	header[EI_MAG0] = ELFMAG0;
-        header[EI_MAG1] = ELFMAG1;
-        header[EI_MAG2] = ELFMAG2;
-        header[EI_MAG3] = ELFMAG3;
-        header[EI_CLASS] = ELFCLASS64;
-        header[EI_VERSION] = EV_CURRENT;
-	header[EI_DATA] = ELFDATA2LSB;
-	header[EI_OSABI] = 1;
-	struct simple_object_elf_read *eor = simple_object_elf_functions.match(header, fd, 0, ".text", &errmsg, &err);
-	int i;
-	if(!eor){
-		printf("how to use this shit?\n");
-	puts(errmsg);
+//	header[EI_MAG0] = ELFMAG0;
+//        header[EI_MAG1] = ELFMAG1;
+//        header[EI_MAG2] = ELFMAG2;
+//        header[EI_MAG3] = ELFMAG3;
+//        header[EI_CLASS] = ELFCLASS64;
+//        header[EI_VERSION] = EV_CURRENT;
+//	header[EI_DATA] = ELFDATA2LSB;
+//	header[EI_OSABI] = 1;
+	struct simple_object_read *sor = simple_object_start_read(fdi, 0, NULL, &errmsg, &err);
+	simple_object_find_sections(sor, find_one_section, NULL, &err);
+//	if(!sor){
+//		printf("how to use this shit?\n");
+//		puts(errmsg);
+//		return 0;
+//	}
+	simple_object_attributes *sof = simple_object_fetch_attributes(sor, &errmsg, &err);
+	
+	simple_object_write *sow = simple_object_start_write(sof, NULL, &errmsg, &err);
+	const char *ptr = simple_object_write_to_file(sow, fdo, &err);
+	if(ptr != NULL){
+		puts(ptr);
 		return 0;
 	}
-	for (i = 0; i< SIMPLE_OBJECT_MATCH_HEADER_LEN; i++)
-		printf("%c", header[i]);
-	simple_object_elf_functions.release_read(NULL);
-	close(fd);
+
+	simple_object_release_attributes(sof);
+	simple_object_release_read(sor);
+	simple_object_release_write(sow);
+	close(fdi);
+	close(fdo);
 	return 0;
 }
