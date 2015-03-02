@@ -35,22 +35,22 @@ These instructions are(assume **head** is of type char\* in C):
 <tr>
 <td> "+"(ASCII 0x2b)</td>
 <td> increase the current square by 1</td>
-<td> (\*head)++</td>
+<td> (*head)++</td>
 </tr>
 <tr>
 <td> "-"(ASCII 0x2d)</td>
 <td> decrease the current square by 1</td>
-<td> (\*head)--</td>
+<td> (*head)--</td>
 </tr>
 <tr>
 <td> ","(ASCII 0x2c)</td>
 <td> write to the current square</td>
-<td> \*head = getchar() </td>
+<td> *head = getchar() </td>
 </tr>
 <tr>
 <td> "."(ASCII 0x2e)</td>
 <td> read from the current square</td>
-<td> putchar(\*head)</td>
+<td> putchar(*head)</td>
 </tr>
 <tr>
 <td> "\["(ASCII 0x5b)</td>
