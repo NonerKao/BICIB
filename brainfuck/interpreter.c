@@ -31,8 +31,8 @@ Foundation, 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA.*/
  */
 
 #define SS 1024
-#define TL 32768
-char tape[TL];
+#define TS 32768
+char tape[TS];
 int head = 0;
 void process(char ch);
 
@@ -75,10 +75,10 @@ void process(char ch){
 	char temp;
 	switch(ch){
 		case '<':
-			head = (head+TL-1)%TL;
+			head = (head+TS-1)%TS;
 			break;
 		case '>':
-			head = (head+1)%TL;
+			head = (head+1)%TS;
 			break;
 		case ',':
 			tape[head] = getchar();
@@ -128,7 +128,7 @@ void process(char ch){
 int main(int argc, char* argv[]){
 	char ch;
 	if(argc != 2){
-		printf("usage: %s <source>\n");
+		printf("usage: %s <source>\n", argv[0]);
 		return 0;
 	}
 	fp = fopen(argv[1], "r");
