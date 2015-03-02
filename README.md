@@ -55,7 +55,7 @@ These instructions are(assume **head** is of type char\* in C):
 <tr>
 <td> "\["(ASCII 0x5b)</td>
 <td> loop until the current square is 0</td>
-<td> while(\*head){</td>
+<td> while(*head){</td>
 </tr>
 <tr>
 <td> "\]"(ASCII 0x5d)</td>
