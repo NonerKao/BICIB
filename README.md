@@ -23,7 +23,7 @@ These instructions are(assume **head** is of type char\* in C):
 <td> C</td>
 </tr>
 <tr>
-<td> "\<"(ASCII 0x3c)</td>
+<td> "&lt;"(ASCII 0x3c)</td>
 <td> move the head to the left square</td>
 <td> head--</td>
 </tr>
