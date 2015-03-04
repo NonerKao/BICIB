@@ -30,7 +30,7 @@ int main(int argc, char* argv[]){
 	i = 0;
 
 	if(argc < 2){
-		printf("usage: %s <source>\n");
+		printf("usage: %s <source>\n", argv[0]);
 		return 0;
 	}
 	FILE* fp = fopen(argv[1], "r");
