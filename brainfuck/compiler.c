@@ -30,79 +30,69 @@ int main(int argc, char* argv[]){
 	i = 0;
 
 	if(argc < 2){
-		printf("usage: %s <source> [-o <executable>]\n");
+		printf("usage: %s <source>\n");
 		return 0;
 	}
 	FILE* fp = fopen(argv[1], "r");
-	int len = strlen(argv[1]);
-	if((argv[1][len-1] != 'b') || (argv[1][len-2] != '.')){
-		printf("file is not a .b file\n");
-		return 0;
-	}
-	argv[1][len-2] = '\0';
-	char* output = (argc == 4) ? argv[3] : argv[1];
 
-	FILE* fd = fopen("temp.s", "w");
-
-	fprintf(fd, ".section    .text\n_start:\n");
-	fprintf(fd, "mov %rsp, %rbx\n");
-	fprintf(fd, "mov $%d, %rax\n", TS);
-	fprintf(fd, "ZERO:\n");
-	fprintf(fd, "test $0xFFFF, %rax\n");
-	fprintf(fd, "jz EZERO\n");
-	fprintf(fd, "movq $0x0, 0x0(%rbx)\n");
-	fprintf(fd, "sub $0x8, %rax\n");
-	fprintf(fd, "sub $0x8, %rbx\n");
-	fprintf(fd, "jmp ZERO\n");
-	fprintf(fd, "EZERO:\n");
-	fprintf(fd, "add $%d, %rbx\n", TS);
-	fprintf(fd, "mov $0x1, %rdx\n");
+	printf(".section    .text\n_start:\n");
+	printf("mov %rsp, %rbx\n");
+	printf("mov $%d, %rax\n", TS);
+	printf("ZERO:\n");
+	printf("test $0xFFFF, %rax\n");
+	printf("jz EZERO\n");
+	printf("movq $0x0, 0x0(%rbx)\n");
+	printf("sub $0x8, %rax\n");
+	printf("sub $0x8, %rbx\n");
+	printf("jmp ZERO\n");
+	printf("EZERO:\n");
+	printf("add $%d, %rbx\n", TS);
+	printf("mov $0x1, %rdx\n");
 	while(fscanf(fp, "%c", &ch) == 1){
 		switch(ch){
 			case '<'://3 bytes 48 ff c3
-				fprintf(fd, "inc %rbx\n");
+				printf("inc %rbx\n");
 				break;
 			case '>'://        48 ff cb
-				fprintf(fd, "dec %rbx\n");
+				printf("dec %rbx\n");
 				break;
 			case ','://19 bytes 48 89 de 48 c7 c7 00 00 00 00 48 c7 c0 00 00 00 00 0f 05
-				fprintf(fd, "mov %rbx, %rsi\nmov $0x0, %rdi\nmov $0x0, %rax\nsyscall\n");
+				printf("mov %rbx, %rsi\nmov $0x0, %rdi\nmov $0x0, %rax\nsyscall\n");
 				break;
 			case '.': //        48 89 de 48 c7 c7 01 00 00 00 48 c7 c0 01 00 00 00 0f 05
-				fprintf(fd, "mov %rbx, %rsi\nmov $0x1, %rdi\nmov $0x1, %rax\nsyscall\n");
+				printf("mov %rbx, %rsi\nmov $0x1, %rdi\nmov $0x1, %rax\nsyscall\n");
 				break;
 			case '[':
 				stack[top] = i;
-				fprintf(fd, "START_%d:\n", i);
-				fprintf(fd, "testb $0xff, 0x0(%rbx)\n");
-				fprintf(fd, "jz END_%d\n", i);
+				printf("START_%d:\n", i);
+				printf("testb $0xff, 0x0(%rbx)\n");
+				printf("jz END_%d\n", i);
 				top++; i++;
 				break;
 			case ']'://2 bytes    eb f6
 				top--;
-				fprintf(fd, "jmp START_%d\n", stack[top]);
-				fprintf(fd, "END_%d:\n", stack[top]);
+				printf("jmp START_%d\n", stack[top]);
+				printf("END_%d:\n", stack[top]);
 				break;
 			case '+'://2 bytes    fe 03
-				fprintf(fd, "incb 0x0(%rbx)\n");
+				printf("incb 0x0(%rbx)\n");
 				break;
 			case '-'://           fe 0b
-				fprintf(fd, "decb 0x0(%rbx)\n");
+				printf("decb 0x0(%rbx)\n");
 				break;
 			default:
 				break;
 		}
 	}
 	//the exit code is not correct, FIXME
-	fprintf(fd, "mov $0x0, %rdi\nmov $0x3c, %rax\nsyscall\n.global        _start\n.end\n");
-	fclose(fd);
+	printf("mov $0x0, %rdi\nmov $0x3c, %rax\nsyscall\n.global        _start\n.end\n");
 	fclose(fp);
-	system("as temp.s -o temp.o");
-	system("rm temp.s");
-	char command[200];
-	sprintf(command, "ld -dynamic-linker /lib64/ld-linux-x86-64.so.2 -L/usr/lib/gcc/x86_64-unknown-linux-gnu/4.9.2/ -L/lib/ temp.o -lc -o %s", output);
-	system(command);
-	system("rm temp.o");
+	//system("as temp.s -o temp.o");
+	//system("rm temp.s");
+	//char command[200];
+	//sprintf(command, "ld -dynamic-linker /lib64/ld-linux-x86-64.so.2 -L/usr/lib/gcc/x86_64-unknown-linux-gnu/4.9.2/ -L/lib/ temp.o -lc -o %s", output);
+	//system(command);
+	//system("rm temp.o");
 
 	return 0;
 }
