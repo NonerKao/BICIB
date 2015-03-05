@@ -1,28 +1,14 @@
 #!/bin/bash
 
-<<<<<<< HEAD
-if [ $# != 1 && $# != 3 ]; then
-	echo "usage: $0 source.b [-o <output>]"
-	exit
-elif [ $# == 3 && $2"y" == "-oy" ]; then
-=======
 if [ $# != 1 -a $# != 3 ]; then
 	echo "usage: $0 source.b [-o <output>]"
 	exit
 elif [ $# == 3 -a $2"y" == "-oy" ]; then
->>>>>>> baa978143fb21ba3d5aad4b6450859023bca30e3
 	OUT=$3
 else
 	OUT="a.out"
 fi
 
-/root/BICIB/brainfuck/compiler $1 > temp.s
-<<<<<<< HEAD
-as temp.s
-ld -dynamic-linker /lib64/ld-linux-x86-64.so.2 -L/usr/lib/gcc/x86_64-unknown-linux-gnu/4.9.2/ -L/lib/ temp.o -lc -o $OUT
-rm temp.s temp.o
-=======
 as temp.s -o temp.o
 ld -dynamic-linker /lib64/ld-linux-x86-64.so.2 -L/usr/lib/gcc/x86_64-unknown-linux-gnu/4.9.2/ -L/lib/ temp.o -lc -o $OUT
 rm -f temp.s temp.o
->>>>>>> baa978143fb21ba3d5aad4b6450859023bca30e3
