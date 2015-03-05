@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function off()
+{
+	echo "usage: $0 source.b <file1> <file2> ... <filen>"
+	exit
+}
+
+if [ $# <= 1 ]; then
+	off
+fi
+
+/root/BICIB/brainfuck/bin/interpreter $@ 

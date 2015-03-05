@@ -14,7 +14,8 @@ COPY . /root/BICIB
 
 # a more comfortable prompt style
 COPY etc/.bashrc /root/
-COPY etc/bc /usr/bin/
+COPY etc/bfc /usr/bin/
+COPY etc/bfi /usr/bin/
 
 # an entry
 WORKDIR /root/BICIB/brainfuck

@@ -35,7 +35,7 @@ int main(int argc, char* argv[]){
 	}
 	FILE* fp = fopen(argv[1], "r");
 
-	printf(".section    .text\n_start:\n");
+	printf(".section    .text\n_bicib:\n");
 	printf("mov %rsp, %rbx\n");
 	printf("mov $%d, %rax\n", TS);
 	printf("ZERO:\n");
@@ -84,8 +84,9 @@ int main(int argc, char* argv[]){
 				break;
 		}
 	}
-	//the exit code is not correct, FIXME
-	printf("mov $0x0, %rdi\nmov $0x3c, %rax\nsyscall\n.global        _start\n.end\n");
+	//printf("mov $0x0, %rdi\nmov $0x3c, %rax\nsyscall\n");
+	printf("retq\n");
+	printf(".global        _bicib\n.end\n");
 	fclose(fp);
 	//system("as temp.s -o temp.o");
 	//system("rm temp.s");

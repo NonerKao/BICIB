@@ -1,0 +1,26 @@
+#!/bin/bash
+
+function off()
+{
+	echo "usage: $0 source.b [-o <output>]"
+	exit
+}
+
+if [ $# != 1 -a $# != 3 ]; then
+	off
+elif [ $# == 3 ]; then 
+	if [ $2"y" == "-oy" ]; then
+		OUT=$3
+	else
+		off
+	fi
+else
+	OUT="a.out"
+fi
+
+/root/BICIB/brainfuck/bin/compiler $1 > temp.s
+as temp.s -o temp.o
+ld -dynamic-linker /lib64/ld-linux-x86-64.so.2 \
+  -L/usr/lib/gcc/x86_64-unknown-linux-gnu/4.9.2/ \
+  temp.o /root/BICIB/brainfuck/entry/en.o -lc -o $OUT
+rm -f temp.s temp.o
