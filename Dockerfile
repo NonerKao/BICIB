@@ -14,8 +14,7 @@ COPY . /root/BICIB
 
 # a more comfortable prompt style
 COPY etc/.bashrc /root/
-COPY etc/bfc /usr/bin/
-COPY etc/bfi /usr/bin/
+RUN make -C /root/BICIB/etc install
 
 # an entry
 WORKDIR /root/BICIB/brainfuck

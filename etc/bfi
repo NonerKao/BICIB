@@ -6,8 +6,8 @@ function off()
 	exit
 }
 
-if [ $# <= 1 ]; then
+if [ $# -lt 1 ]; then
 	off
 fi
 
-/root/BICIB/brainfuck/bin/interpreter $@ 
+/root/BICIB/brainfuck/bootstrap/interpreter $@ 

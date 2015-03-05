@@ -26,11 +26,13 @@ int main(int argc, char* argv[]){
 			int j;
 			for(j = i-2; j >= 0; j--)
 				fclose(farray[j]);
+			printf("%s not found!\n", argv[i]);
 			return -1;
 		}
 	}
 
-	asm("callq _bicib");
+	//asm("callq _bicib");
+	_bicib();
 
 	for(i = 1; i< argc; i++){
 		fclose(farray[i-1]);

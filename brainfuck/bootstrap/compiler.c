@@ -37,6 +37,7 @@ int main(int argc, char* argv[]){
 
 	printf(".section    .text\n_bicib:\n");
 	printf("mov %rsp, %rbx\n");
+	printf("sub $0x20, %rbx\n");
 	printf("mov $%d, %rax\n", TS);
 	printf("ZERO:\n");
 	printf("test $0xFFFF, %rax\n");
@@ -84,16 +85,9 @@ int main(int argc, char* argv[]){
 				break;
 		}
 	}
-	//printf("mov $0x0, %rdi\nmov $0x3c, %rax\nsyscall\n");
 	printf("retq\n");
 	printf(".global        _bicib\n.end\n");
 	fclose(fp);
-	//system("as temp.s -o temp.o");
-	//system("rm temp.s");
-	//char command[200];
-	//sprintf(command, "ld -dynamic-linker /lib64/ld-linux-x86-64.so.2 -L/usr/lib/gcc/x86_64-unknown-linux-gnu/4.9.2/ -L/lib/ temp.o -lc -o %s", output);
-	//system(command);
-	//system("rm temp.o");
 
 	return 0;
 }

@@ -2,10 +2,10 @@ FILE := interpreter compiler
 
 all: ${FILE}
 interpreter: interpreter.c
-	gcc interpreter.c -o interpreter
+	gcc $< -o $@
 
 compiler: compiler.c
-	gcc compiler.c -o compiler
+	gcc $< -o $@
 
 clean:
 	rm -fr $(FILE)
