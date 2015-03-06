@@ -15,30 +15,19 @@
 
 int main(int argc, char* argv[]){
 	int i;
-	FILE** farray = NULL;
-	if(argc != 1){
-		farray = (FILE**)malloc(sizeof(FILE*)*(argc-1));
-	}
+	FILE* farray = NULL;
 
 	for(i = 1; i< argc; i++){
-		farray[i-1] = fopen(argv[i], "r");
-		if(farray[i-1] == NULL){
-			int j;
-			for(j = i-2; j >= 0; j--)
-				fclose(farray[j]);
+		farray = fopen(argv[i], "r");
+		if(farray == NULL){
 			printf("%s not found!\n", argv[i]);
 			return -1;
 		}
-	}
-
-	//asm("callq _bicib");
-	_bicib();
-
-	for(i = 1; i< argc; i++){
+		
 		fclose(farray[i-1]);
 	}
 
-	if(farray != NULL)
-		free(farray);
+	_bicib();
+
 	return 0;
 }

@@ -1,4 +1,4 @@
 
 all: en.o
-en.o: en.c
-	gcc -c en.c
+en.o: en.s
+	as en.s -o en.o
