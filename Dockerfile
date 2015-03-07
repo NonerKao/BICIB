@@ -4,10 +4,9 @@
 FROM fedora:21
 MAINTAINER Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
-# git: after 0.1, develope in containers
 # gcc make: for bootstrapping only, to be removed in future releases
-# binutils: as and ld is necessary in current stage 
-RUN yum -y install git gcc make binutils
+# binutils: as and ld is necessary 
+RUN yum -y install gcc make binutils
 
 # copy files
 COPY . /root/BICIB
