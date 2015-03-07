@@ -37,17 +37,7 @@ int main(int argc, char* argv[]){
 
 	printf(".section    .text\n_bicib:\n");
 	printf("mov %rsp, %rbx\n");
-	printf("sub $0x20, %rbx\n");
-	printf("mov $%d, %rax\n", TS);
-	printf("ZERO:\n");
-	printf("test $0xFFFF, %rax\n");
-	printf("jz EZERO\n");
-	printf("movq $0x0, 0x0(%rbx)\n");
-	printf("sub $0x8, %rax\n");
-	printf("sub $0x8, %rbx\n");
-	printf("jmp ZERO\n");
-	printf("EZERO:\n");
-	printf("add $%d, %rbx\n", TS);
+	printf("sub $0x18, %rbx\n");
 	printf("mov $0x1, %rdx\n");
 	while(fscanf(fp, "%c", &ch) == 1){
 		switch(ch){

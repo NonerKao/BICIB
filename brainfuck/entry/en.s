@@ -6,34 +6,50 @@ sub    $0x10,%rsp
 mov    %edi,-0x4(%rbp)       # argc
 mov    %rsi,-0x10(%rbp)      # argv
 push %rbx
-push %rcx
+push %r10
 
 mov $0x1, %ebx
+mov %rsp, %r10
+sub $0x20, %r10
+
+mov $0x8000, %rax
+ZERO:
+test $0xFFFF, %rax
+jz EZERO
+movq $0x0, 0x0(%r10)
+sub $0x8, %rax
+sub $0x8, %r10
+jmp ZERO
+EZERO:
+add $0x8000, %r10
+
+# for (ebx=1; bex!=argc;ebx++)
 jmp    L2
 L1:
+# rax = argv[ebx]
 lea    0x0(,%ebx,8),%rdx
 mov    -0x10(%rbp),%rax
 add    %rdx,%rax
 mov    (%rax),%rax
+
 #open
-mov    %rax,%rdi
+mov %rax,%rdi
 mov $0x2, %rax
 mov $0x0, %rsi
 mov $0x0, %rdx
 syscall
 
 mov %rax, %rdi
-mov %rsp, %rsi
-sub $0x20, %rsi
 #read
+movb $0x0, 0x0(%r10)
 L3:
+dec %r10
+mov %r10, %rsi
 mov $0x0, %rax
 mov $0x1, %rdx
 syscall
-dec %rsi
-movb %al, 0x0(%rsi)
-cmpb $0x0, %al
-jne L3
+cmpb $0x1, %al
+je L3
 
 #close
 mov $0x3, %rax
@@ -46,7 +62,7 @@ jne    L1
 
 callq _bicib
 
-pop %rcx
+pop %r10
 pop %rbx
 mov    $0x0,%eax
 leaveq 

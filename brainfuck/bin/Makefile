@@ -1,8 +1,8 @@
 FILE := interpreter compiler
 
 all: ${FILE}
-../entry/en.o: ../entry/en.c
-	gcc -c $< -o $@
+../entry/en.o: ../entry
+	make -C ../entry
 interpreter: ../src/interpreter.b ../entry/en.o
 	bfc $< -o $@
 
