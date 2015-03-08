@@ -86,13 +86,14 @@ We write the two programs in brainfuck.  In other words, these programs
 should be viewed as Turing machines.  There is no random-accessed memory
 any more, but only a tape now.
 
-As a result, we maintain a small part of C code, which is responsble for
-loading the brainfuck source code to a contiguous region on the tape of 
-the two machines.  The code will then be processed by the main part of 
-interpreter/compiler.  After bootstrapping, both of them are self-hosted.
+As a result, we implement a small piece of assembly code as a general 
+entry point, which is responsible for loading the files specified in the
+prompt into a contiguous region on the tape of the simulated machine.  
+The code will then be processed by the main part of interpreter/compiler,
+writen in brainfuck.
 
-Currently(version 0.1) we use C to bootstrap the whole process, and
-the usage mentioned above may not be available until future releases.
+Currently(version 0.2) we have the compiler self-hosted but still use 
+C interpreter to run brainfuck programs.
 
 Getting started
 ===============

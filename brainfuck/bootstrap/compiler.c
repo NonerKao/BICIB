@@ -24,7 +24,7 @@
 int main(int argc, char* argv[]){
 	char ch;
 	int i;
-	char stack[SS];
+	int stack[SS];
 	for(i = 0; i< SS; i++) stack[i]=0;
 	int top = 0;
 	i = 0;

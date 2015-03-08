@@ -8,7 +8,8 @@ preprocessor: ../src/preprocessor.b ../entry/en.o
 interpreter: ../src/interpreter.b ../entry/en.o
 	bfc $< -o $@
 compiler: ../src/compiler.b ../entry/en.o
-	bfc $< -o $@
+	bfc $< 
+	mv a.out compiler
 
 clean:
 	rm -fr $(FILE) ../entry/en.o
