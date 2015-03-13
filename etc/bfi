@@ -10,4 +10,4 @@ if [ $# -lt 1 ]; then
 	off
 fi
 
-/root/BICIB/brainfuck/bootstrap/interpreter $@ 
+/root/BICIB/brainfuck/bootstrap/interpreter $@

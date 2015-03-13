@@ -23,7 +23,7 @@ jmp ZERO
 EZERO:
 add $0x8000, %r10
 
-# for (ebx=1; bex!=argc;ebx++)
+# for (ebx=1; ebx!=argc;ebx++)
 jmp    L2
 L1:
 # rax = argv[ebx]
@@ -50,6 +50,10 @@ mov $0x1, %rdx
 syscall
 cmpb $0x1, %al
 je L3
+movb $0x0, 0x0(%r10)
+dec %r10
+movb $0x0, 0x0(%r10)
+dec %r10
 
 #close
 mov $0x3, %rax
