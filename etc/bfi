@@ -2,11 +2,11 @@
 
 function off()
 {
-	echo "usage: $0 source.b <file1> <file2> ... <filen>"
+	echo "usage: $0 source.b [file1]"
 	exit
 }
 
-if [ $# -lt 1 ]; then
+if [ $# -lt 2 ]; then
 	off
 fi
 

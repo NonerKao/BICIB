@@ -15,7 +15,7 @@
    along with this program; if not write to the Free Software
    Foundation 51 Franklin Street Fifth Floor Boston MA 02110_1301 USA*/
 
->[>]
+>>[>]
 
 <[ at tail of code
 
@@ -28,89 +28,91 @@
                                               +++++++++++++++++++++++++++++++++++++++++++++[
                                             ++[
                 [-]
-                >--------<
+                >--------< 1 for comment
               ]0x2c
-              >+<
+              >+<  9 for scan
             ]0x2e
-            >+<
+            >+<  8 for print
           ]0x5b
-          >+<
+          >+<  7 for while
         ]0x5d
-        >+<
+        >+<  6 for endwhile
       ]0x2b
-      >+<
+      >+<  5 for add
     ]0x2d
-    >+<
+    >+<  4 for sub
   ]0x3c
-  >+<
+  >+<  3 for left
 ]0x3e
->++< 
+>++< 2 for right
 <
 ]
+
+FIXME: remove comments
+FIXME: set loop pair
 
 >> at head of preprocessed code
 [[<+>-]>]
 <<[<]> at head of preprocessed code
 
-[ process each instruction 
--[
-  -[
-    -[
-      -[
-        -[
-          -[
-            -[
-              -[
-                -[
-                ] 0x2c scan
-                >[>]> move to c0
-                [ >>[-<<<+>>>] <[->+<] <[->+<] >->+< ] ready
-                >>,< 
-                [ <[-<+>] >[-<+>] <<<[->>>+<<<] >>-<+> ] back to c1
-                < to c0 <<[<]
-                <+>
-              ] 0x2e print
-FIXME: infinite loop why?
-		+<-[+>-
-                >[>]> move to c0
-                [ >>[-<<<+>>>] <[->+<] <[->+<] >->+< ] ready
-                >>.< 
-                [ <[-<+>] >[-<+>] <<<[->>>+<<<] >>-<+> ] back to c1
-                < to c0 <<[<]
-                <] >
-                [-<+>]
-                <+>
-            ] 0x5b ???
-            <+>
-          ] 0x5d ???
-          >[>]> move to c0
-          [ >>[-<<<+>>>] <[->+<] <[->+<] >->+< ] ready
-          >>-< 
-          [ <[-<+>] >[-<+>] <<<[->>>+<<<] >>-<+> ] back to c1
-          < to c0 <<[<]
-          <+>
-        ] 0x2b add 2 
-        >[>]> move to c0
-        [ >>[-<<<+>>>] <[->+<] <[->+<] >->+< ] ready
-        >>++< 
-        [ <[-<+>] >[-<+>] <<<[->>>+<<<] >>-<+> ] back to c1
-        < to c0 <<[<]
-        <+>
-      ] 0x2d dec and inc c0      
-      >[>]> move to c0
-      [ >>[-<<<+>>>] <[->+<] <[->+<] >->+< ] ready
-      >>-< 
-      [ <[-<+>] >[-<+>] <<<[->>>+<<<] >>-<+> ] back to c1
-      < to c0 + <<[<]
-FIXME: wrong head
-      <+>
-    ] 0x3c sub 2 c0
-    >[>]> -- <<[<]
-    <+>
-  ] 0x3e inc c0
-  >[>]> + <<[<]
-  <+>
-] comments
-<+>
+three_blank_cursor move right <<<[-]>[-]>[-]>
+1st reg 
+2nd reg
+3rd branch
+
+[ process each instruction <+> branch
+ -[
+   -[
+     -[
+       -[
+         -[
+           -[
+             -[
+               -[
+                 -[
+                 ]
+                 <[- 0x2c scan 
+                    +++++++++.---------
+                 ]>
+                 <<<+>>>
+               ] 
+               <[- 0x2e print
+                  ++++++++.--------
+               ]>
+               <<<+>>>
+             ] 
+             <[- 0x5b while
+                +++++++.-------
+             ]>
+             <<<+>>>
+           ] 
+           <[- 0x5d endwhile
+              ++++++.------
+           ]>
+           <<<+>>>
+         ] 
+         <[- 0x2b add
+            +++++.-----
+         ]>
+         <<<+>>>
+       ] 
+       <[- 0x2d sub
+          ++++.----
+       ]>
+       <<<+>>>
+     ] 
+     <[- 0x3c left
+        +++.---
+     ]>
+     <<<+>>>
+   ] 
+   <[- 0x3e right
+      ++.--
+   ]>
+   <<<+>>>
+ ] comments
+ <[-]> clear branch
+ <<<+>>>
 > next inst ] leave if null encounter
+
 

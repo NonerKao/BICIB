@@ -6,7 +6,7 @@ MAINTAINER Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 # gcc make: for bootstrapping only, to be removed in future releases
 # binutils: as and ld is necessary 
-RUN yum -y install gcc make binutils
+RUN yum -y install gcc make binutils git vim
 
 # copy files
 COPY . /root/BICIB
