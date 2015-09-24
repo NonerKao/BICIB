@@ -52,13 +52,10 @@ FIXME: remove comments
 FIXME: set loop pair
 
 >> at head of preprocessed code
-[[<+>-]>]
-<<[<]> at head of preprocessed code
-
-three_blank_cursor move right <<<[-]>[-]>[-]>
-1st reg 
-2nd reg
-3rd branch
+three_blank_cursor move right
+1st reg <<<[-]>>> 
+2nd reg set to 255 supporting 240 level neted loops <<[-]-->>
+3rd branch_on_break <[-]>
 
 [ process each instruction <+> branch
  -[
@@ -72,47 +69,43 @@ three_blank_cursor move right <<<[-]>[-]>[-]>
                  -[
                  ]
                  <[- 0x2c scan 
-                    +++++++++.---------
+                    <<+++++++++>>
                  ]>
-                 <<<+>>>
                ] 
                <[- 0x2e print
-                  ++++++++.--------
+                  <<++++++++>>
                ]>
-               <<<+>>>
              ] 
              <[- 0x5b while
-                +++++++.-------
+                <[->+<]>-
+                [-<+<+>>]
              ]>
-             <<<+>>>
            ] 
            <[- 0x5d endwhile
-              ++++++.------
+              <[->+<]>
+              [-<+<+>>]<+>
            ]>
-           <<<+>>>
          ] 
          <[- 0x2b add
-            +++++.-----
+            <<+++++>>
          ]>
-         <<<+>>>
        ] 
        <[- 0x2d sub
-          ++++.----
+          <<++++>>
        ]>
-       <<<+>>>
      ] 
      <[- 0x3c left
-        +++.---
+        <<+++>>
      ]>
-     <<<+>>>
    ] 
    <[- 0x3e right
-      ++.--
+      <<++>>
    ]>
-   <<<+>>>
  ] comments
- <[-]> clear branch
- <<<+>>>
+ <[- 
+    <<+>>
+ ]>
+<<<.>>>
+<<[->+<]>> move loop counter
 > next inst ] leave if null encounter
-
 
