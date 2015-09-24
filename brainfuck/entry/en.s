@@ -54,6 +54,8 @@ cmpb    $0x1  , %al
 je L3
 movb    $0x0  , 0x0(%r10)
 dec     %r10
+movb    $0x0  , 0x0(%r10)
+dec     %r10
 
 #close
 mov     $0x3  , %rax

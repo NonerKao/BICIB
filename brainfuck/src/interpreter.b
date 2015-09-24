@@ -105,7 +105,102 @@ three_blank_cursor move right
  <[- 
     <<+>>
  ]>
-<<<.>>>
 <<[->+<]>> move loop counter
 > next inst ] leave if null encounter
 
+<[-]<[-]<[-]<[[->+<]<]>> at the head of program
+1st reg <<<[-]>>> 
+2nd reg <<[-]>>
+3rd blank(branch on break)  <[-]>
+5_6th reg: the position of tape
+
+         r1 r2 b3             b4 r5 r6
+layout:  {} {} {} the pregram {} {} {} the tape
+
+[ process each instruction <+>
+ -[
+   -[
+     -[
+       -[
+         -[
+           -[
+             -[
+               -[
+                 -[
+                    <-> clear b3 so that a anchor is set
+                    >>[>]>> at r6 
+                    on r6 [>[-<<<+>>>]<[->+<]<[->+<]>+>-] at empty r6 >
+                    if zero set r2 
+                       [
+                          
+                       ]
+                    
+                    [-<<<+>>>]<<<+++++++++>>>
+                 ]
+                 <[- 0x2c scan 
+                    >>[>]>> at r6
+                    on r6 [>[-<<<+>>>]<[->+<]<[->+<]>+>-] at empty r6 >,<
+                    < on r5 [[-<+>]>[-<+>]<<<[->>>+<<<]>>+<-]
+                    <<[<]<
+                    <<+++++++++>>
+                 ]>
+               ] 
+               <[- 0x2e print
+                  >>[>]>> at r6
+                  on r6 [>[-<<<+>>>]<[->+<]<[->+<]>+>-] at empty r6 ><
+                  < on r5 [[-<+>]>[-<+>]<<<[->>>+<<<]>>+<-]
+                  <<[<]<
+                  <<++++++++>>
+               ]>
+             ] 
+no here
+             <[- 0x5b while
+                <[->+<]>-
+                [-<+<+>>]
+             ]>
+           ] 
+           <[- 0x5d endwhile
+              <[->+<]>
+              [-<+<+>>]<+>
+           ]>
+no here
+         ] 
+         <[- 0x2b add
+            >>[>]>> at r6
+                     b4 r5 r6
+layout:  the pregram {} {} {} the tape
+            on r6 [>[-<<<+>>>]<[->+<]<[->+<]>+>-] at empty r6 >+<
+            < on r5 [[-<+>]>[-<+>]<<<[->>>+<<<]>>+<-]
+            <<[<]<
+            <<+++++>>
+         ]>
+       ] 
+       <[- 0x2d sub
+          >>[>]>> at r6
+          on r6 [>[-<<<+>>>]<[->+<]<[->+<]>+>-] at empty r6 >-<
+          < on r5 [[-<+>]>[-<+>]<<<[->>>+<<<]>>+<-]
+          <<[<]<
+          <<++++>>
+       ]>
+     ] 
+     <[- 0x3c left
+        >>[>]>>
+        -
+        <<<[<]<
+        <<+++>>
+     ]>
+   ] 
+   <[- 0x3e right
+      >>[>]>>
+      +
+      <<<[<]<
+      <<++>>
+   ]>
+ ] comments
+ <[- 
+    <<+>>
+ ]>
+> next inst ] at b4
+
+.>.>.> at r6
+.>.>.>.>.>.>.>.>.>.>.>
