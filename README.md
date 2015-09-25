@@ -118,7 +118,7 @@ docker build -t bicib .
 After the container is built, you may run it following [the guide](http://docs.docker.com/userguide/),
 or briefly type the following instruction,
 ```bash
-docker run --rm -it bicib bfi /root/BICIB/brainfuck/examples/hw.b
+docker run --rm bicib bfi /root/BICIB/brainfuck/examples/hw.b
 ```
 
 Have fun!
