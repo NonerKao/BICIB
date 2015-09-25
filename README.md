@@ -53,12 +53,12 @@ These instructions are(assume **head** is of type char\* in C):
 <td> putchar(*head)</td>
 </tr>
 <tr>
-<td> "\["(ASCII 0x5b)</td>
+<td> "["(ASCII 0x5b)</td>
 <td> loop until the current square is 0</td>
 <td> while(*head){</td>
 </tr>
 <tr>
-<td> "\]"(ASCII 0x5d)</td>
+<td> "]"(ASCII 0x5d)</td>
 <td> the end of the loop</td>
 <td> }</td>
 </tr>
@@ -83,17 +83,17 @@ nor object linking.  These constraints make it hard to produce a
 self-hosted brainfuck interpreter or compiler.
 
 We write the two programs in brainfuck.  In other words, these programs
-should be viewed as Turing machines.  There is no random-accessed memory
-any more, but only a tape now.
+themselves should be viewed as Turing machines.  There is no 
+random-accessed memory but only a tape.
 
 As a result, we implement a small piece of assembly code as a general 
 entry point, which is responsible for loading the files specified in the
-prompt into a contiguous region on the tape of the simulated machine.  
-The code will then be processed by the main part of interpreter/compiler,
-writen in brainfuck.
+command line arguments into a contiguous region on the tape of 
+the simulated machine.  The code will then be processed by the 
+main part of interpreter/compiler, writen in brainfuck.
 
-Currently(version 0.2) we have the compiler self-hosted but still use 
-C interpreter to run brainfuck programs.
+Currently(version 0.3) we have self-hosted compiler and interpreter,
+and planning to start developing debugger.
 
 Getting started
 ===============
@@ -120,6 +120,12 @@ or briefly type the following instruction,
 ```bash
 docker run --rm bicib bfi /root/BICIB/brainfuck/examples/hw.b
 ```
+
+You may also use interactive shell,
+```bash
+docker run --rm bicib bash
+```
+in which the you can use **bfc** or **bfi** directly.
 
 Have fun!
 

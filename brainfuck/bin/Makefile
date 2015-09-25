@@ -1,15 +1,15 @@
 FILE := interpreter compiler preprocessor
 
 all: ${FILE}
-../entry/en.o: ../entry
-	make -C ../entry
-preprocessor: ../src/preprocessor.b ../entry/en.o
+../src/entry/en.o: ../src/entry
+	make -C ../src/entry
+preprocessor: ../src/preprocessor.b ../src/entry/en.o
 	bfc $< -o $@
-interpreter: ../src/interpreter.b ../entry/en.o
+interpreter: ../src/interpreter.b ../src/entry/en.o
 	bfc $< -o $@
-compiler: ../src/compiler.b ../entry/en.o
-	bfc $< 
-	mv a.out compiler
+compiler: ../src/compiler.b ../src/entry/en.o
+	bfc $< -o $@
+#	mv a.out compiler
 
 clean:
-	rm -fr $(FILE) ../entry/en.o
+	rm -fr $(FILE) ../src/entry/en.o

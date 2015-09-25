@@ -3,4 +3,4 @@ all:
 	make -C ../etc/ install
 
 clean:
-	rm -fr $(FILE) ../entry/en.o
+	rm -fr $(FILE) ./src/entry/en.o
