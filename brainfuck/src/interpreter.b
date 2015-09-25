@@ -126,7 +126,7 @@ layout:  inst before {} {} {}  i0 i1 i2
                          ]
                          < now [- following whiles
                              <+> increase loop count
-                             <<+++++>>
+                             <<+++++++>>
                          ]>
                          << [->+<] > b3: move next
                      ] b3 < 
@@ -134,7 +134,29 @@ layout:  inst before {} {} {}  i0 i1 i2
              ]>
            ] 
            <[- 0x5d endwhile: go check and jmp if not zero
-              <<++++++>>
+               >++++++<
+               <+> set r2 loop count
+                     r1 r2 b3 now          
+layout:  inst before {} {} {}  {} i1 i2 
+                           ^
+               < r2 [
+                    << check inst; set r1 >+<
+                    -------[
+                             +[
+                                 >-<
+                                 [->>>+<<<]>>>++++++<<<
+                             ]
+                             > r1 [- leading endwhiles
+                                  >+<
+                                  >>++++++<<
+                             ] r1 <
+                    ]
+                    > r1 [- leading whiles
+                         >-<
+                         >>+++++++<<
+                    ] r1 <
+                    >>[-<+>]< new r2
+               ] r2 
            ]>
          ] 
          <[- 0x2b add
@@ -174,5 +196,3 @@ layout:  the pregram {} {} {} the tape
  ]>
 > next inst ] at b4
 
-.>.>.> at r6
-.>.>.>

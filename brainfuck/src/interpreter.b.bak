@@ -17,6 +17,7 @@
 
 >>[>]
 
+>[-]>[-]>[-]<<<
 <[ at tail of code
 
 --------------------------------------------------------------[
@@ -53,62 +54,7 @@ FIXME: set loop pair
 
 >> at head of preprocessed code
 three_blank_cursor move right
-1st reg <<<[-]>>> 
-2nd reg set to 255 supporting 240 level neted loops <<[-]-->>
-3rd branch_on_break <[-]>
 
-[ process each instruction <+> branch
- -[
-   -[
-     -[
-       -[
-         -[
-           -[
-             -[
-               -[
-                 -[
-                 ]
-                 <[- 0x2c scan 
-                    <<+++++++++>>
-                 ]>
-               ] 
-               <[- 0x2e print
-                  <<++++++++>>
-               ]>
-             ] 
-             <[- 0x5b while
-                <[->+<]>-
-                [-<+<+>>]
-             ]>
-           ] 
-           <[- 0x5d endwhile
-              <[->+<]>
-              [-<+<+>>]<+>
-           ]>
-         ] 
-         <[- 0x2b add
-            <<+++++>>
-         ]>
-       ] 
-       <[- 0x2d sub
-          <<++++>>
-       ]>
-     ] 
-     <[- 0x3c left
-        <<+++>>
-     ]>
-   ] 
-   <[- 0x3e right
-      <<++>>
-   ]>
- ] comments
- <[- 
-    <<+>>
- ]>
-<<[->+<]>> move loop counter
-> next inst ] leave if null encounter
-
-<[-]<[-]<[-]<[[->+<]<]>> at the head of program
 1st reg <<<[-]>>> 
 2nd reg <<[-]>>
 3rd blank(branch on break)  <[-]>
@@ -127,14 +73,7 @@ layout:  {} {} {} the pregram {} {} {} the tape
              -[
                -[
                  -[
-                    <-> clear b3 so that a anchor is set
-                    >>[>]>> at r6 
-                    on r6 [>[-<<<+>>>]<[->+<]<[->+<]>+>-] at empty r6 >
-                    if zero set r2 
-                       [
-                          
-                       ]
-                    
+                    <-> should not be here
                     [-<<<+>>>]<<<+++++++++>>>
                  ]
                  <[- 0x2c scan 
@@ -147,23 +86,56 @@ layout:  {} {} {} the pregram {} {} {} the tape
                ] 
                <[- 0x2e print
                   >>[>]>> at r6
-                  on r6 [>[-<<<+>>>]<[->+<]<[->+<]>+>-] at empty r6 ><
+                  on r6 [>[-<<<+>>>]<[->+<]<[->+<]>+>-] at empty r6 >.<
                   < on r5 [[-<+>]>[-<+>]<<<[->>>+<<<]>>+<-]
                   <<[<]<
                   <<++++++++>>
                ]>
              ] 
-no here
-             <[- 0x5b while
-                <[->+<]>-
-                [-<+<+>>]
+             <[- 0x5b while: set r2 if zero / jump if r2 
+                 >>[>]>> at r6
+                 on r6 [>[-<<<+>>>]<[->+<]<[->+<]>+>-] at empty r6 
+
+                     >[ if not zero
+                       << on r5 [[-<+>]>[-<+>]<<<[->>>+<<<]>>+<-] 
+                       <<[<]< on b3 <->
+                       >>[>]>> 
+                       on r6 [>[-<<<+>>>]<[->+<]<[->+<]>+>-] at empty r6 >
+                       [-<+>]
+                     ]
+                  <[->+<] at empty r6
+
+                 < on r5 [[-<+>]>[-<+>]<<<[->>>+<<<]>>+<-]
+                 <<[<]< at b3 <+>
+
+                 <<+++++++>>
+                 < at r2[-
+                     set b3 loop count >+<
+                     > at b3 [ >> at next inst; set now break <+>
+                  r1 r2 b3 now  v        
+layout:  inst before {} {} {}  i0 i1 i2 
+                         -------[ 
+                                  +[ others
+                                     [-<<<+>>>]<<<++++++>>>
+                                     <->
+                                  ]
+                                  < now [- following endwhiles
+                                      <-> decrease loop count; continue if zero
+                                      <<++++++>>
+                                  ]>
+                         ]
+                         < now [- following whiles
+                             <+> increase loop count
+                             <<+++++>>
+                         ]>
+                         << [->+<] > b3: move next
+                     ] b3 < 
+                 ] r2 > 
              ]>
            ] 
-           <[- 0x5d endwhile
-              <[->+<]>
-              [-<+<+>>]<+>
+           <[- 0x5d endwhile: go check and jmp if not zero
+              <<++++++>>
            ]>
-no here
          ] 
          <[- 0x2b add
             >>[>]>> at r6
@@ -203,6 +175,4 @@ layout:  the pregram {} {} {} the tape
 > next inst ] at b4
 
 .>.>.> at r6
-.>.>.>.>.>.>.>.>.>.>.>
-
-
+.>.>.>
